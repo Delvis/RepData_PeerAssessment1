@@ -8,7 +8,7 @@ First we unzip and read the data file
 
 ```r
 data <- unz("repdata_data_activity.zip", "activity.csv")
-data <- read.csv(data, colClasses=c("integer", "Date", "factor"))
+data <- read.csv(data)
 ```
 
 ## What is mean total number of steps taken per day?
@@ -79,8 +79,7 @@ max
 ```
 
 ```
-## [1] 2235
-## 288 Levels: 0 10 100 1000 1005 1010 1015 1020 1025 1030 1035 1040 ... 955
+## [1] 835
 ```
 Maximum number of steps is in interval 835.
 
@@ -179,7 +178,8 @@ Mean stays the same. Median changes slightly, as it is now more similar to the m
 
 ```r
 weekday <- weekdays(as.Date(new_data$date))
-weekend <- (weekday == "Saturday" | weekday == "Sunday")
+# Sys.setlocale("LC_TIME","English United States")
+weekend <- (weekday == "Sábado" | weekday == "Domingo")
 ```
 
 > Make a panel plot containing a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). The plot should look something like the following, which was creating using simulated data:
@@ -190,7 +190,7 @@ weekday_y <- tapply(new_data$steps[!weekend], new_data$interval[!weekend], mean)
 weekend_y <- tapply(new_data$steps[weekend], new_data$interval[weekend], mean)
 week_x <- new_data$interval[1:288]
 
-par(mfrow=c(1,2))
+par(mfrow = c(1, 2))
 
 plot(week_x, weekday_y, type="l", xlab="Interval", ylab="Number of steps", main="weekday", ylim = c(0, 200))
 plot(week_x, weekend_y, type="l", xlab="Interval", ylab="Number of steps", main="weekend", ylim = c(0, 200))
