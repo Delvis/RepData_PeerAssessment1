@@ -177,9 +177,10 @@ Mean stays the same. Median changes slightly, as it is now more similar to the m
 
 
 ```r
-weekday <- weekdays(as.Date(new_data$date))
+new_data$date <- as.Date(new_data$date)
+weekday <- weekdays(new_data$date)
 # Sys.setlocale("LC_TIME","English United States")
-weekend <- (weekday == "Sábado" | weekday == "Domingo")
+weekend <- (weekday == "Sábado" | weekday == "Domingo")# Saturday and Sunday, in an ENGLISH system
 ```
 
 > Make a panel plot containing a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). The plot should look something like the following, which was creating using simulated data:
@@ -192,8 +193,8 @@ week_x <- new_data$interval[1:288]
 
 par(mfrow = c(1, 2))
 
-plot(week_x, weekday_y, type="l", xlab="Interval", ylab="Number of steps", main="weekday", ylim = c(0, 200))
-plot(week_x, weekend_y, type="l", xlab="Interval", ylab="Number of steps", main="weekend", ylim = c(0, 200))
+plot(week_x, weekday_y, type="l", ylab="Steps (Frequency)", main="weekday", ylim = c(0, 220))
+plot(week_x, weekend_y, type="l", xlab="Interval", main="weekend", ylim = c(0, 220))
 ```
 
 ![plot of chunk unnamed-chunk-15](./PA1_template_files/figure-html/unnamed-chunk-15.png) 
