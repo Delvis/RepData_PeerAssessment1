@@ -193,8 +193,8 @@ week_x <- new_data$interval[1:288]
 
 par(mfrow = c(1, 2))
 
-plot(week_x, weekday_y, type="l", ylab="Steps (Frequency)", main="weekday", ylim = c(0, 220))
-plot(week_x, weekend_y, type="l", xlab="Interval", main="weekend", ylim = c(0, 220))
+plot(week_x, weekday_y, type="l", ylab="Steps (Frequency)", main="weekday", ylim = c(0, 250))
+plot(week_x, weekend_y, type="l", xlab="Interval", main="weekend", ylim = c(0, 250))
 ```
 
 ![plot of chunk unnamed-chunk-15](./PA1_template_files/figure-html/unnamed-chunk-15.png) 
