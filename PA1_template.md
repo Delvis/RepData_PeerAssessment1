@@ -117,11 +117,11 @@ for (i in 1:length(new_data$steps)) {
 Now let's check again if there are missing values:
 
 ```r
-sum(is.na(data$steps))
+sum(is.na(new_data$steps))
 ```
 
 ```
-## [1] 2304
+## [1] 0
 ```
 
 There are no missing values now!
@@ -193,8 +193,8 @@ week_x <- new_data$interval[1:288]
 
 par(mfrow = c(1, 2))
 
-plot(week_x, weekday_y, type="l", ylab="Steps (Frequency)", main="weekday", ylim = c(0, 250))
-plot(week_x, weekend_y, type="l", xlab="Interval", main="weekend", ylim = c(0, 250))
+plot(week_x, weekday_y, type="l", ylab="Steps (Frequency)", xlab="", main="weekday", ylim = c(0, 250), col = "orange")
+plot(week_x, weekend_y, type="l", xlab="Interval", ylab="", main="weekend", ylim = c(0, 250), col = "orange")
 ```
 
 ![plot of chunk unnamed-chunk-15](./PA1_template_files/figure-html/unnamed-chunk-15.png) 
